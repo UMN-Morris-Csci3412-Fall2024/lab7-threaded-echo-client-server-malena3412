@@ -7,8 +7,8 @@
 - **Operating System:** Rocky Linux 9.4 (Blue Onyx)
 
 ## Test Setup
-- **Number of Clients:** [Number of clients used, e.g., 10, 20, 50]
-- **File Size:** [Size of the file used, e.g., 100MB]
+- **Number of Clients:** 5 and 10
+- **File Size:** 100MB
 - **Server Modes Tested:**
   - Single-threaded
   - Multi-threaded with Thread Pool
@@ -17,44 +17,23 @@
 
 ### Single-threaded Mode
 - **Execution Time:**
-  - 5 Clients: [Time taken, e.g., 30 seconds]
-  - 10 Clients: [Time taken, e.g., 60 seconds]
-- **CPU Usage:**
-  - Observed high CPU usage on a single core.
-- **Memory Usage:**
-  - [Memory usage details, e.g., 500MB]
+  - 5 Clients: 4 minutes
+  - 10 Clients: 6 minutes
 - **Observations:**
   - The server struggled to handle multiple clients concurrently.
   - Increased latency as the number of clients increased.
-  - Single core was heavily utilized, leading to potential bottlenecks.
 
 ### Multi-threaded Mode with Thread Pool
 - **Execution Time:**
-  - 10 Clients: [Time taken, e.g., 15 seconds]
-  - 20 Clients: [Time taken, e.g., 25 seconds]
-  - 50 Clients: [Time taken, e.g., 60 seconds]
-- **CPU Usage:**
-  - Utilized multiple cores effectively.
-  - Lower CPU usage per core compared to single-threaded mode.
-- **Memory Usage:**
-  - [Memory usage details, e.g., 700MB]
+  - 5 Clients: 4 minutes
+  - 10 Clients: 6 minutes
 - **Observations:**
-  - The server handled multiple clients more efficiently.
-  - Reduced latency and better performance under load.
-  - Effective distribution of tasks across multiple cores.
+  - The server handled multiple clients with a similar efficiency to single-threaded.
 
 ## Summary
 - **Comparison of Single-threaded and Multi-threaded Performance:**
-  - The multi-threaded approach with a thread pool significantly outperformed the single-threaded approach.
-  - The single-threaded server experienced high latency and CPU bottlenecks as the number of clients increased.
-  - The multi-threaded server utilized multiple cores, leading to better performance and lower latency.
+  - The multi-threaded approach with a thread pool did not really differ from the single-threaded approach.
+  - Not really sure why there was no difference in this case but it could have something to do with memory or the I/O operations.
 
 - **Impact of Increasing the Number of Clients:**
-  - In the single-threaded mode, increasing the number of clients led to exponential increases in execution time and CPU usage.
-  - In the multi-threaded mode, the server scaled better with the number of clients, showing more linear increases in execution time.
-
-- **Other Observations:**
-  - The choice of file size and number of clients significantly impacts server performance.
-  - Monitoring tools like `htop` were useful in observing CPU and memory usage in real-time.
-
-By following these steps and documenting your observations, you can provide a comprehensive summary of your stress testing results.
+  - In both modes, increasing the number of clients led to increases in execution time.
